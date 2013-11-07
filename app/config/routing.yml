@@ -9,4 +9,10 @@
 
 ---
 
+home:
+  rewrite: /
+  method: get
+  actual: SGPHPUG\Page\GetIndexView
+
+
 ...
