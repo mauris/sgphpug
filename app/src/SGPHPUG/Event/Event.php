@@ -31,29 +31,37 @@ class Event implements ConsumerInterface
         foreach ($files as $file) {
             $event = json_decode(file_get_contents($file), true);
             if ($event['fb_event']) {
-                $fbevent = null;
-                if ($cache->check('fbevent-' . $event['fb_event'])) {
-                    $fbevent = $cache->get('fbevent-' . $event['fb_event']);
-                }
-                if (!$fbevent) {
-                    $fb_url = 'https://graph.facebook.com/' . $event['fb_event'] .'?access_token=' . $token;
-                    $fbevent = json_decode(file_get_contents($fb_url), true);
-                    $cache->set('fbevent-' . $event['fb_event'], $fbevent, new TimeSpan(216000));
-                }
-                $start = DateTime::fromString($fbevent['start_time']);
-                $start->timezone(8);
-                $end = DateTime::fromString($fbevent['end_time']);
-                $end->timezone(8);
-
-                $fbevent['start_time'] = $start->format('d M Y, l, g:i a');
-                $isSameDate = self::isSameDate($start->toTimestamp(), $end->toTimestamp());
-                $fbevent['end_time'] = $end->format($isSameDate ? 'g:i a' : 'd M Y, l, g:i a');
-
-                $event['fb_event'] = $fbevent;
+                $event['fb_event'] = $this->loadFacebookEvent($event['fb_event']);
             }
+
+
             $events[] = $event;
         }
         return $events;
+    }
+
+    protected function loadFacebookEvent($eventId)
+    {
+        $cache = $this->cache;
+        $fbevent = null;
+        if ($cache->check('fbevent-' . $eventId)) {
+            $fbevent = $cache->get('fbevent-' . $eventId);
+        }
+        if (!$fbevent) {
+            $fb_url = 'https://graph.facebook.com/' . $eventId .'?access_token=' . $token;
+            $fbevent = json_decode(file_get_contents($fb_url), true);
+            $cache->set('fbevent-' . $eventId, $fbevent, new TimeSpan(216000));
+        }
+        $start = DateTime::fromString($fbevent['start_time']);
+        $start->timezone(8);
+        $end = DateTime::fromString($fbevent['end_time']);
+        $end->timezone(8);
+
+        $fbevent['start_time'] = $start->format('d M Y, l, g:i a');
+        $isSameDate = self::isSameDate($start->toTimestamp(), $end->toTimestamp());
+        $fbevent['end_time'] = $end->format($isSameDate ? 'g:i a' : 'd M Y, l, g:i a');
+
+        return $fbevent;
     }
 
     protected static function isSameDate($date1, $date2)
