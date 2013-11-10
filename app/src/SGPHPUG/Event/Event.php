@@ -31,7 +31,7 @@ class Event implements ConsumerInterface
         foreach ($files as $file) {
             $event = json_decode(file_get_contents($file), true);
             if ($event['fb_event']) {
-                $event['fb_event'] = $this->loadFacebookEvent($event['fb_event']);
+                $event['fb_event'] = $this->loadFacebookEvent($event['fb_event'], $token);
             }
 
 
@@ -40,7 +40,7 @@ class Event implements ConsumerInterface
         return $events;
     }
 
-    protected function loadFacebookEvent($eventId)
+    protected function loadFacebookEvent($eventId, $token)
     {
         $cache = $this->cache;
         $fbevent = null;
