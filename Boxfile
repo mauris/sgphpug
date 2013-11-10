@@ -1,8 +1,10 @@
 web1:
   document_root: web
-  php_version: 5.3.23
+  php_version: 5.4.14
   php_extensions:
     - eaccelerator
     - zip
+    - curl
+    - apc
   after_build:
     - "cd app && if [ ! -f composer.phar ]; then curl -s http://getcomposer.org/installer | php; fi; php composer.phar install --prefer-source"
