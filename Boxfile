@@ -1,0 +1,9 @@
+web1:
+  document_root: web
+  php_version: 5.3.27
+  php_extensions:
+    - gd
+    - eaccelerator
+  after_deploy:
+    - "cd app && curl -sS https://getcomposer.org/installer | php"
+    - "cd app && php composer.phar install"
