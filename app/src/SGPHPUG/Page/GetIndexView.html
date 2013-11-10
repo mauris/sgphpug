@@ -4,5 +4,20 @@
         <title>Singapore PHP User Group</title>
     </head>
     <body>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1>Singapore PHP User Group</h1>
+                </div>
+            </div>
+            {{#events}}
+            <div class="row">
+                <div class="col-md-12">
+                    <h2>{{title}}</h2>
+                </div>
+            </div>
+            {{/events}}
+        </div>
+        {{>SGPHPUG\Page\Resources}}
     </body>
 </html>
