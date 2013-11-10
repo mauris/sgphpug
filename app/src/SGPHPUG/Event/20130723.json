@@ -1,0 +1,26 @@
+{
+    "title": "Jul 2013 Meetup",
+    "fb_event": "486847914730774",
+    "presentations": [
+        {
+            "title": "How to create web services for Mobile App",
+            "presentor": {
+                "name": "Mugunth Kumar",
+                "org": "SteinLogic"
+            },
+            "resources" : [
+            ]
+        },
+        {
+            "title": "Wordpress themes: A case study on creating open source projects for the non-technies by a php noobie",
+            "presentor": {
+                "name": "Sayanee Basu",
+                "url": "http://sayan.ee/"
+            },
+            "resources" : [
+                "http://www.youtube.com/watch?v=gPrdFrivrLo",
+                "http://www.slideshare.net/sgphpug/intro-to-laravel-4"
+            ]
+        }
+    ]
+}
