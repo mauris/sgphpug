@@ -34,6 +34,12 @@ class Event implements ConsumerInterface
                 $event['fb_event'] = $this->loadFacebookEvent($event['fb_event'], $token);
             }
 
+            $resources = array();
+            foreach ($event['presentations'] as $presentation) {
+                $resources = array_merge($resources, $presentation['resources']);
+            }
+
+            $event['resources'] = $resources;
 
             $events[] = $event;
         }
