@@ -1,0 +1,38 @@
+{
+    "title": "Oct 2013 Meetup",
+    "date": "29 Oct 2013",
+    "fb_event": "272874456170882",
+    "presentations": [
+        {
+            "title": "Continuous Integration with Phing & Hudson",
+            "presentor": {
+                "name": "Shreeniwas Iyer",
+                "org": "Vocanic"
+            },
+            "resources" : [
+                "http://www.youtube.com/watch?v=wNy5N9wjyWg",
+                "http://www.slideshare.net/shreeniwasiyer/2013-1028-php-ug-presentation-ci-using-phing-and-hudson"
+            ]
+        },
+        {
+            "title": "Introduction to Laravel 4",
+            "presentor": {
+                "name": "Benson Liang"
+            },
+            "resources" : [
+                "http://www.youtube.com/watch?v=gPrdFrivrLo",
+                "http://www.slideshare.net/sgphpug/intro-to-laravel-4"
+            ]
+        },
+        {
+            "title": "Opening Statements",
+            "presentor": {
+                "name": "Michael Cheng",
+                "org": "mig33"
+            },
+            "resources" : [
+                "http://www.youtube.com/watch?v=UA5bUW7zlpw"
+            ]
+        }
+    ]
+}
