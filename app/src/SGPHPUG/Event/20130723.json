@@ -16,11 +16,7 @@
             "presentor": {
                 "name": "Sayanee Basu",
                 "url": "http://sayan.ee/"
-            },
-            "resources" : [
-                "http://www.youtube.com/watch?v=gPrdFrivrLo",
-                "http://www.slideshare.net/sgphpug/intro-to-laravel-4"
-            ]
+            }
         }
     ]
 }
