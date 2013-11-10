@@ -26,7 +26,7 @@ class Event implements ConsumerInterface
             $cache->set('fb_access_token', $token, new TimeSpan(216000));
         }
 
-        $files = glob(__DIR__ . '/*.json');
+        $files = array_reverse(glob(__DIR__ . '/*.json'));
         $events = array();
         foreach ($files as $file) {
             $event = json_decode(file_get_contents($file), true);
