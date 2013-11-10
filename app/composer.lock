@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "a1ea6e27b785ce6327585c20a77d757b",
+    "hash": "b5b07df043fa0d056dc0b75447391a86",
     "packages": [
         {
             "name": "camspiers/json-pretty",
@@ -82,6 +82,50 @@
             ],
             "description": "A lightweight php library to write and dump configuration to INI format",
             "time": "2013-08-11 23:59:01"
+        },
+        {
+            "name": "mauris/octurlpus",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mauris/octurlpus.git",
+                "reference": "ae6cb37d700ed42241d898bb80b4fbce768bca51"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mauris/octurlpus/zipball/ae6cb37d700ed42241d898bb80b4fbce768bca51",
+                "reference": "ae6cb37d700ed42241d898bb80b4fbce768bca51",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Packfire\\Octurlpus\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Sam-Mauris Yong",
+                    "email": "mauris@hotmail.sg",
+                    "homepage": "http://mauris.sg/",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Octurlpus - making URLs meaningful through OEmbed",
+            "homepage": "http://github.com/mauris/octurlpus",
+            "keywords": [
+                "oembed",
+                "parser",
+                "url"
+            ],
+            "time": "2013-11-10 08:10:20"
         },
         {
             "name": "mauris/yaml",
