@@ -1,7 +1,6 @@
 {
     "require":{
         "php": ">=5.3.0",
-        "packfire/framework": "2.1.*",
-        "facebook/php-sdk": "3.2.*"
+        "packfire/framework": "2.1.*"
     }
 }
