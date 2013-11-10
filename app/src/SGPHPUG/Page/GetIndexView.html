@@ -15,6 +15,11 @@
             <div class="row">
                 <div class="col-md-12">
                     <h2>{{title}}</h2>
+                    {{#fb_event}}
+                        <p>{{start_time}} to {{end_time}}</p>
+                        <p>Location: {{location}}</p>
+                        {{#venue}}<address>{{street}}, {{city}}, {{country}} {{zip}}</address>{{/venue}}
+                    {{/fb_event}}
                 </div>
             </div>
             {{/events}}
