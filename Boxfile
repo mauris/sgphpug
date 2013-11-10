@@ -4,5 +4,4 @@ web1:
   php_extensions:
     - eaccelerator
   after_deploy:
-    - "cd app && curl -sS https://getcomposer.org/installer | php"
-    - "cd app && php composer.phar install"
+    - "cd app && composer install"
