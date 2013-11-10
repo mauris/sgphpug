@@ -30,10 +30,16 @@ class Event implements ConsumerInterface
         $events = array();
         foreach ($files as $file) {
             $event = json_decode(file_get_contents($file), true);
-            if ($token && $event['fb_event']) {
-                $fb_url = 'https://graph.facebook.com/' . $event['fb_event'] .'?access_token=' . $token;
-                $fbevent = json_decode(file_get_contents($fb_url), true);
-
+            if ($event['fb_event']) {
+                $fbevent = null;
+                if ($cache->check('fbevent-' . $event['fb_event'])) {
+                    $fbevent = $cache->get('fbevent-' . $event['fb_event']);
+                }
+                if (!$fbevent) {
+                    $fb_url = 'https://graph.facebook.com/' . $event['fb_event'] .'?access_token=' . $token;
+                    $fbevent = json_decode(file_get_contents($fb_url), true);
+                    $cache->set('fbevent-' . $event['fb_event'], $fbevent, new TimeSpan(216000));
+                }
                 $start = DateTime::fromString($fbevent['start_time']);
                 $start->timezone(8);
                 $end = DateTime::fromString($fbevent['end_time']);
