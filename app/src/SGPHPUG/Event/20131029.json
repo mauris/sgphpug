@@ -28,7 +28,8 @@
             "title": "Opening Statements",
             "presentor": {
                 "name": "Michael Cheng",
-                "org": "mig33"
+                "org": "mig33",
+                "url": "https://github.com/miccheng"
             },
             "resources" : [
                 "http://www.youtube.com/watch?v=UA5bUW7zlpw"
