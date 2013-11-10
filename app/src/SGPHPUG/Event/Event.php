@@ -5,10 +5,13 @@ namespace SGPHPUG\Event;
 use Packfire\FuelBlade\ConsumerInterface;
 use Packfire\DateTime\TimeSpan;
 use Packfire\DateTime\DateTime;
+use Packfire\Octurlpus\Octurlpus;
 
 class Event implements ConsumerInterface
 {
     protected $cache;
+
+    protected $octurlpus;
 
     public function loadAll()
     {
@@ -34,9 +37,15 @@ class Event implements ConsumerInterface
                 $event['fb_event'] = $this->loadFacebookEvent($event['fb_event'], $token);
             }
 
-            $resources = array();
+            $resourcesUrl = array();
             foreach ($event['presentations'] as $presentation) {
-                $resources = array_merge($resources, $presentation['resources']);
+                if (isset($presentation['resources'])) {
+                    $resourcesUrl = array_merge($resourcesUrl, $presentation['resources']);
+                }
+            }
+            $resources = array();
+            foreach ($resourcesUrl as $url) {
+                $resources[] = $this->loadResource($url);
             }
 
             $event['resources'] = $resources;
@@ -44,6 +53,23 @@ class Event implements ConsumerInterface
             $events[] = $event;
         }
         return $events;
+    }
+
+    protected function loadResource($url)
+    {
+        $cache = $this->cache;
+        $urlhash = hash('sha1', $url);
+
+        $resource = null;
+        if ($cache->check('octurlpus-' . $urlhash)) {
+            $resource = $cache->get('octurlpus-' . $urlhash);
+        }
+        if (!$resource) {
+            $resource = $this->octurlpus->request($url);
+            $resource['thumbnail'] = isset($resource['thumbnail']) ? $resource['thumbnail'] : $resource['thumbnail_url'];
+            $cache->set('octurlpus-' . $urlhash, $resource, new TimeSpan(216000));
+        }
+        return $resource;
     }
 
     protected function loadFacebookEvent($eventId, $token)
@@ -77,6 +103,7 @@ class Event implements ConsumerInterface
 
     public function __invoke($container)
     {
+        $this->octurlpus = new Octurlpus();
         $this->cache = $container['cache'];
     }
 }

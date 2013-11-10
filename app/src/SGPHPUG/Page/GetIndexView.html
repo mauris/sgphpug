@@ -20,6 +20,9 @@
                         <p>Location: {{location}}</p>
                         {{#venue}}<address>{{street}}, {{city}}, {{country}} {{zip}}</address>{{/venue}}
                     {{/fb_event}}
+                    {{#resources}}
+                        <img src="{{thumbnail}}" alt="{{title}}">
+                    {{/resources}}
                 </div>
             </div>
             {{/events}}
