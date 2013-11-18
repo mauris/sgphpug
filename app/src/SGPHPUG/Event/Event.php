@@ -13,6 +13,8 @@ class Event implements ConsumerInterface
 
     protected $octurlpus;
 
+    protected $token;
+
     public function loadAll()
     {
         $cache = $this->cache;
@@ -28,6 +30,7 @@ class Event implements ConsumerInterface
             $token = str_replace('access_token=', '', file_get_contents(sprintf('https://graph.facebook.com/oauth/access_token?client_id=%s&client_secret=%s&grant_type=client_credentials', $details['appId'], $details['secret'])));
             $cache->set('fb_access_token', $token, new TimeSpan(216000));
         }
+        $this->token = $token;
 
         $files = array_reverse(glob(__DIR__ . '/*.json'));
         $events = array();
@@ -43,7 +46,7 @@ class Event implements ConsumerInterface
         $event = json_decode(file_get_contents($file), true);
         $event['eventId'] = basename($file, '.json');
         if ($event['fb_event']) {
-            $event['fb_event'] = $this->loadFacebookEvent($event['fb_event'], $token);
+            $event['fb_event'] = $this->loadFacebookEvent($event['fb_event'], $this->token);
             $event['date'] = $event['fb_event']['datetime']->format('d M Y, D');
         }
 
@@ -77,7 +80,7 @@ class Event implements ConsumerInterface
         return $resource;
     }
 
-    protected function loadFacebookEvent($eventId, $token)
+    protected function loadFacebookEvent($eventId)
     {
         $cache = $this->cache;
         $fbevent = null;
@@ -85,7 +88,7 @@ class Event implements ConsumerInterface
             $fbevent = $cache->get('fbevent-' . $eventId);
         }
         if (!$fbevent) {
-            $fb_url = 'https://graph.facebook.com/' . $eventId .'?access_token=' . $token;
+            $fb_url = 'https://graph.facebook.com/' . $eventId .'?access_token=' . $this->token;
             $fbevent = json_decode(file_get_contents($fb_url), true);
             $cache->set('fbevent-' . $eventId, $fbevent, new TimeSpan(216000));
         }
