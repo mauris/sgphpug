@@ -3,19 +3,19 @@
     "fb_event": "272874456170882",
     "presentations": [
         {
-            "title": "Continuous Integration with Phing & Hudson",
-            "presentor": {
-                "name": "Shreeniwas Iyer",
-                "org": "Vocanic"
+            "title": "Opening Statements",
+            "presenter": {
+                "name": "Michael Cheng",
+                "org": "mig33",
+                "url": "https://github.com/miccheng"
             },
             "resources" : [
-                "http://www.youtube.com/watch?v=wNy5N9wjyWg",
-                "http://www.slideshare.net/shreeniwasiyer/2013-1028-php-ug-presentation-ci-using-phing-and-hudson"
+                "http://www.youtube.com/watch?v=UA5bUW7zlpw"
             ]
         },
         {
             "title": "Introduction to Laravel 4",
-            "presentor": {
+            "presenter": {
                 "name": "Benson Liang"
             },
             "resources" : [
@@ -24,14 +24,14 @@
             ]
         },
         {
-            "title": "Opening Statements",
-            "presentor": {
-                "name": "Michael Cheng",
-                "org": "mig33",
-                "url": "https://github.com/miccheng"
+            "title": "Continuous Integration with Phing & Hudson",
+            "presenter": {
+                "name": "Shreeniwas Iyer",
+                "org": "Vocanic"
             },
             "resources" : [
-                "http://www.youtube.com/watch?v=UA5bUW7zlpw"
+                "http://www.youtube.com/watch?v=wNy5N9wjyWg",
+                "http://www.slideshare.net/shreeniwasiyer/2013-1028-php-ug-presentation-ci-using-phing-and-hudson"
             ]
         }
     ]

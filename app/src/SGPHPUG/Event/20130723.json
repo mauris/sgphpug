@@ -4,7 +4,7 @@
     "presentations": [
         {
             "title": "How to create web services for Mobile App",
-            "presentor": {
+            "presenter": {
                 "name": "Mugunth Kumar",
                 "org": "SteinLogic"
             },
@@ -13,7 +13,7 @@
         },
         {
             "title": "Wordpress themes: A case study on creating open source projects for the non-technies by a php noobie",
-            "presentor": {
+            "presenter": {
                 "name": "Sayanee Basu",
                 "url": "http://sayan.ee/"
             }
