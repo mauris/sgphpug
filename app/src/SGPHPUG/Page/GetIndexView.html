@@ -19,11 +19,21 @@
                         <p>{{start_time}} to {{end_time}}, at {{location}}</p>
                         {{#venue}}<address>{{street}}, {{city}}, {{country}} {{zip}}</address>{{/venue}}
                     {{/fb_event}}
+                    <div class="row">
                     {{#presentations}}
-                        {{#resources}}
-                        <img style="height:120px;" src="{{thumbnail}}" alt="{{title}}">
-                        {{/resources}}
+                        <div class="col-md-4 presentation">
+                            <div class="panel panel-info">
+                                <div class="panel-body">
+                                    <h3>{{title}}</h3>
+                                    <p>{{presenter.name}}{{#presenter.org}}, {{presenter.org}}{{/presenter.org}}</p>
+                                    {{#resources}}
+                                    <img style="height:120px;" src="{{thumbnail}}" alt="{{title}}">
+                                    {{/resources}}
+                                </div>
+                            </div>
+                        </div>
                     {{/presentations}}
+                    </div>
                 </div>
             </div>
             {{/events}}

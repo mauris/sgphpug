@@ -1,0 +1,23 @@
+
+@import url('//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.2/css/bootstrap.min.css');
+
+div.presentation h3{
+    margin: 0;
+    overflow:hidden;
+    white-space: nowrap;
+}
+
+div.presentation h3:after{
+    content: "";
+    pointer-events: none;
+    position: absolute;
+    width: 100px;
+    height: 50px;
+    top: 10px;
+    right: 20px;
+    background-image: -webkit-linear-gradient(right, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
+    background-image: -moz-linear-gradient(right, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
+    background-image: -ms-linear-gradient(right, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
+    background-image: -o-linear-gradient(right, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
+    background-image: linear-gradient(to left, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
+}
