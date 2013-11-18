@@ -35,20 +35,19 @@ class Event implements ConsumerInterface
             $event = json_decode(file_get_contents($file), true);
             if ($event['fb_event']) {
                 $event['fb_event'] = $this->loadFacebookEvent($event['fb_event'], $token);
+                $event['date'] = $event['fb_event']['datetime']->format('d M Y, D');
             }
 
             $resourcesUrl = array();
-            foreach ($event['presentations'] as $presentation) {
+            foreach ($event['presentations'] as &$presentation) {
                 if (isset($presentation['resources'])) {
-                    $resourcesUrl = array_merge($resourcesUrl, $presentation['resources']);
+                    $resources = array();
+                    foreach ($presentation['resources'] as $url) {
+                        $resources[] = $this->loadResource($url);
+                    }
+                    $presentation['resources'] = $resources;
                 }
             }
-            $resources = array();
-            foreach ($resourcesUrl as $url) {
-                $resources[] = $this->loadResource($url);
-            }
-
-            $event['resources'] = $resources;
 
             $events[] = $event;
         }
@@ -89,6 +88,7 @@ class Event implements ConsumerInterface
         $end = DateTime::fromString($fbevent['end_time']);
         $end->timezone(8);
 
+        $fbevent['datetime'] = $start;
         $fbevent['start_time'] = $start->format('d M Y, l, g:i a');
         $isSameDate = self::isSameDate($start->toTimestamp(), $end->toTimestamp());
         $fbevent['end_time'] = $end->format($isSameDate ? 'g:i a' : 'd M Y, l, g:i a');
