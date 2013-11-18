@@ -32,26 +32,32 @@ class Event implements ConsumerInterface
         $files = array_reverse(glob(__DIR__ . '/*.json'));
         $events = array();
         foreach ($files as $file) {
-            $event = json_decode(file_get_contents($file), true);
-            if ($event['fb_event']) {
-                $event['fb_event'] = $this->loadFacebookEvent($event['fb_event'], $token);
-                $event['date'] = $event['fb_event']['datetime']->format('d M Y, D');
-            }
 
-            $resourcesUrl = array();
-            foreach ($event['presentations'] as &$presentation) {
-                if (isset($presentation['resources'])) {
-                    $resources = array();
-                    foreach ($presentation['resources'] as $url) {
-                        $resources[] = $this->loadResource($url);
-                    }
-                    $presentation['resources'] = $resources;
-                }
-            }
-
-            $events[] = $event;
+            $events[] = $this->loadFile($file);
         }
         return $events;
+    }
+
+    protected function loadFile($file)
+    {
+        $event = json_decode(file_get_contents($file), true);
+        $event['eventId'] = basename($file, '.json');
+        if ($event['fb_event']) {
+            $event['fb_event'] = $this->loadFacebookEvent($event['fb_event'], $token);
+            $event['date'] = $event['fb_event']['datetime']->format('d M Y, D');
+        }
+
+        $resourcesUrl = array();
+        foreach ($event['presentations'] as &$presentation) {
+            if (isset($presentation['resources'])) {
+                $resources = array();
+                foreach ($presentation['resources'] as $url) {
+                    $resources[] = $this->loadResource($url);
+                }
+                $presentation['resources'] = $resources;
+            }
+        }
+        return $event;
     }
 
     protected function loadResource($url)
