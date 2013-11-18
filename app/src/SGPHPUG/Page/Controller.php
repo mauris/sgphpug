@@ -11,7 +11,10 @@ class Controller extends BaseController
     {
         $provider = new Event();
         $provider($this->ioc);
-        $this->state['event'] = $provider->get($eventId);
+        $event = $provider->get($eventId);
+        $venue = $event['fb_event']['venue'];
+        $event['gmapaddress'] = urlencode($venue['city'] . ', ' . $venue['country'] . ' ' . $venue['zip']);
+        $this->state['event'] = $event;
         $this->render();
     }
 }

@@ -71,6 +71,7 @@ class Event implements ConsumerInterface
             $resource['thumbnail'] = isset($resource['thumbnail']) ? $resource['thumbnail'] : $resource['thumbnail_url'];
             $cache->set('octurlpus-' . $urlhash, $resource, new TimeSpan(216000));
         }
+        $resource['permalink'] = $url;
         return $resource;
     }
 
