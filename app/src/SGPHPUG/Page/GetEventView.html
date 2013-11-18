@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Singapore PHP User Group</title>
+        <base href="{{rootUrl}}">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    </head>
+    <body>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1>Singapore PHP User Group</h1>
+                </div>
+            </div>
+            {{#event}}
+            <div class="row">
+                <div class="col-md-12">
+                    <h2>{{date}}</h2>
+                    {{#fb_event}}
+                        <p>At {{location}}</p>
+                    {{/fb_event}}
+                    <div class="row">
+                    {{#presentations}}
+                        <div class="col-md-4 presentation">
+                            <div class="panel panel-info">
+                                <div class="panel-body">
+                                    <h3>{{title}}</h3>
+                                    <p>by {{^presenter.url}}{{presenter.name}}{{/presenter.url}}{{#presenter.url}}<a href="{{presenter.url}}">{{presenter.name}}</a>{{/presenter.url}}{{#presenter.org}} from {{presenter.org}}{{/presenter.org}}</p>
+                                    {{#resources}}
+                                    <img style="height:120px;" src="{{thumbnail}}" alt="{{title}}">
+                                    {{/resources}}
+                                </div>
+                            </div>
+                        </div>
+                    {{/presentations}}
+                    </div>
+                </div>
+            </div>
+            {{/event}}
+        </div>
+        {{>SGPHPUG\Page\Resources}}
+    </body>
+</html>
