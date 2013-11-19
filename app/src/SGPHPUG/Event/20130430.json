@@ -1,0 +1,30 @@
+{
+    "fb_event": "351452121642236",
+    "presentations": [
+        {
+            "title": "Supercharge your dev environment with Vagrant and Puppet",
+            "presenter": {
+                "name": "Michael Cheng",
+                "title": "Senior Software Engineer",
+                "org": "mig33"
+            },
+            "resources" : [
+            ]
+        },
+        {
+            "title": "Introduction to PHPStorm",
+            "presenter": {
+                "name": "Arul Kumaran",
+                "url": "Luracast"
+            }
+        },
+        {
+            "title": "Magento eCommerce Performance Optimization",
+            "presenter": {
+                "name": "Ashish Purohit",
+                "title": "Senior Software Analyst",
+                "url": "Ranosys Technologies Pte. Ltd."
+            }
+        }
+    ]
+}
