@@ -1,0 +1,21 @@
+{
+    "fb_event": "389499624498369",
+    "presentations": [
+        {
+            "title": "Design Driven Development with CodeIgniter",
+            "presenter": {
+                "name": "Artemis Mendrinos",
+                "org": "PropertyGuru"
+            },
+            "resources" : [
+            ]
+        },
+        {
+            "title": "How to create web services for Mobile App",
+            "presenter": {
+                "name": "Mugunth Kumar",
+                "url": "SteinLogic"
+            }
+        }
+    ]
+}
