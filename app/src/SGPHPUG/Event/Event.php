@@ -41,7 +41,7 @@ class Event implements ConsumerInterface
         $event['eventId'] = basename($file, '.json');
         if ($event['fb_event']) {
             $event['fb_event'] = $this->loadFacebookEvent($event['fb_event'], $this->token);
-            $event['date'] = $event['fb_event']['datetime']->format('d M Y, D');
+            $event['date'] = $event['fb_event']['datetime']->format('d M Y');
         }
 
         $resourcesUrl = array();
