@@ -1,0 +1,28 @@
+{
+    "fb_event": "154741208013409",
+    "presentations": [
+        {
+            "title": "Diving Deeper into Drupal CMS",
+            "presenter": {
+                "name": "Sven Berg Ryen",
+                "org": "Drupal User Group"
+            },
+            "resources" : [
+            ]
+        },
+        {
+            "title": "How Balsamiq Mockups helped me clinch a 6-digit PHP project",
+            "presenter": {
+                "name": "Sim Kim Sia"
+            }
+        },
+        {
+            "title": "Github Project Flow",
+            "presenter": {
+                "name": "Sam Yong",
+                "title": "CEO & Co-Founder",
+                "url": "HeartCode Pte. Ltd."
+            }
+        }
+    ]
+}
