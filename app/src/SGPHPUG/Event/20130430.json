@@ -15,7 +15,7 @@
             "title": "Introduction to PHPStorm",
             "presenter": {
                 "name": "Arul Kumaran",
-                "url": "Luracast"
+                "org": "Luracast"
             }
         },
         {
@@ -23,7 +23,7 @@
             "presenter": {
                 "name": "Ashish Purohit",
                 "title": "Senior Software Analyst",
-                "url": "Ranosys Technologies Pte. Ltd."
+                "org": "Ranosys Technologies Pte. Ltd."
             }
         }
     ]
