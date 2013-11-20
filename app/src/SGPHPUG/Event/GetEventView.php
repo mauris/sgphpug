@@ -1,6 +1,6 @@
 <?php
 
-namespace SGPHPUG\Page;
+namespace SGPHPUG\Event;
 
 use Packfire\Application\Pack\View;
 
