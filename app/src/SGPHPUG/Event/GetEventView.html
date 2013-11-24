@@ -18,7 +18,8 @@
                 </div>
             </div>
             <div class="row">
-                <div class="player col-md-12">
+                <div class="col-md-12">
+                    <div id="oEmbedPlayer"></div>
                 </div>
             </div>
             <div class="row">
@@ -31,7 +32,7 @@
                                     <h3>{{title}}</h3>
                                     <p>by {{^presenter.url}}{{presenter.name}}{{/presenter.url}}{{#presenter.url}}<a href="{{presenter.url}}">{{presenter.name}}</a>{{/presenter.url}}{{#presenter.title}}, {{presenter.title}}{{/presenter.title}}{{#presenter.org}}, {{presenter.org}}{{/presenter.org}}</p>
                                     {{#resources}}
-                                    <a href="{{permalink}}" target="_blank"><img style="height:120px;" src="{{thumbnail}}" alt="{{title}}"></a>
+                                    <a href="{{permalink}}" rel="oembed" target="_blank"><img style="height:120px;" src="{{thumbnail}}" alt="{{title}}"></a>
                                     <script type="text/plain">{{&html}}</script>
                                     {{/resources}}
                                 </div>
@@ -46,6 +47,8 @@
             </div>
             {{/event}}
         </div>
+
         {{>SGPHPUG\Page\Resources}}
+        <script src="assets/scripts/embedloader.js"></script>
     </body>
 </html>
